@@ -1,31 +1,42 @@
 {
-  "name": "nextra-docs-template",
-  "version": "0.0.1",
-  "description": "Nextra docs template",
+  "name": "soybean-admin-react-docs",
+  "version": "1.0.0",
+  "description": "Soybean-React-Docs",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint . --fix",
     "start": "next start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shuding/nextra-docs-template.git"
-  },
-  "author": "Shu Ding <g@shud.in>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/shuding/nextra-docs-template/issues"
-  },
-  "homepage": "https://github.com/shuding/nextra-docs-template#readme",
   "dependencies": {
-    "next": "^13.0.6",
-    "nextra": "latest",
-    "nextra-theme-docs": "latest",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "@radix-ui/react-slot": "1.1.2",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "lucide-react": "0.479.0",
+    "next": "15.2.1",
+    "nextra": "4.2.16",
+    "nextra-theme-docs": "4.2.16",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "tailwind-merge": "3.0.2",
+    "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
-    "@types/node": "18.11.10",
-    "typescript": "^4.9.3"
+    "@eslint/eslintrc": "3.3.0",
+    "@soybeanjs/eslint-config": "1.5.3",
+    "@svgr/webpack": "8.1.0",
+    "@tailwindcss/postcss": "4.0.12",
+    "@types/node": "22.13.10",
+    "@types/react": "19.0.10",
+    "@unocss/eslint-config": "66.1.0-beta.3",
+    "eslint": "9.22.0",
+    "eslint-config-next": "15.2.1",
+    "eslint-plugin-react-refresh": "0.4.19",
+    "eslint-plugin-sort": "4.0.0",
+    "tailwindcss": "4.0.12",
+    "typescript": "5.7.3"
   }
 }
