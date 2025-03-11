@@ -7,8 +7,12 @@ export default {
     // Or if using `src` directory:
     './src/**/*.{js,jsx,ts,tsx,md,mdx}'
   ],
+  plugins: [],
   theme: {
-    extend: {}
-  },
-  plugins: []
-}
+    extend: {
+      colors: {
+        soybean: 'var(--soybean)'
+      }
+    }
+  }
+};

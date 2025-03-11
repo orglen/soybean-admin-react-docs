@@ -1,11 +1,11 @@
-import { Logo } from '@icons';
+import { Logo, QQ } from '@icons';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Banner, Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { Footer, Layout, Link, Navbar } from 'nextra-theme-docs';
 
-import '@/css/global.css';
+import '@css/global.css';
 import { cn } from '@/lib/utils';
 
 const geistSans = Geist({
@@ -30,22 +30,20 @@ export const metadata: Metadata = {
     icon: '/favicon.svg'
   },
   keywords: ['Soybean-React', 'Soybean-React-Docs', 'react', 'admin', 'template'],
-  title: 'soybean-admin-react-docs'
+  title: {
+    default: 'Soybean-React-Docs',
+    template: '%s | Soybean-React'
+  }
 };
 const navbar = (
   <Navbar
-    logo={
-      <Logo
-        height="20"
-        className={cn(
-          'hover:transition-all hover:duration-1000 motion-reduce:hover:transition-none',
-          '[mask-image:linear-gradient(60deg,#000_25%,rgba(0,0,0,.2)_50%,#000_75%)] [mask-position:0] [mask-size:400%]',
-          'hover:[mask-position:100%]'
-        )}
-      />
-    }
-    // ... Your additional navbar options
-  />
+    chatIcon={<QQ className="w-[24px] h-[24px] " />}
+    chatLink="https://qm.qq.com/cgi-bin/qm/qr?k=lf7vqv-9JgJ_NDBAUk9EofQEfpqDw7so&jump_from=webapi&authKey=Ueo/dyEtrRm1vgkMI4yqiKjBRtKQuaEGNxMaXX56CoPQz2GRFP+qAADfKoe3ajJN"
+    logo={<Logo className="w-[32px] h-[32px] text-[var(--soybean)]" />}
+    projectLink="https://github.com/soybeanjs/soybean-admin-react"
+  >
+    <div className="flex items-center gap-2">1111</div>
+  </Navbar>
 );
 
 const banner = (
@@ -84,12 +82,16 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Layout
           banner={banner}
-          docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
-          editLink="Edit this page on GitHub"
+          docsRepositoryBase="https://github.com/soybeanjs/soybean-admin-react-docs"
+          editLink="在github上编辑此页面"
           footer={footer}
           navbar={navbar}
           pageMap={pageMap}
           sidebar={{ defaultMenuCollapseLevel: 1 }}
+          feedback={{
+            content: '反馈',
+            labels: 'feedback'
+          }}
         >
           {children}
         </Layout>
