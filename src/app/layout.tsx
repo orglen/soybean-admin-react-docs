@@ -6,7 +6,6 @@ import { getPageMap } from 'nextra/page-map';
 import { Footer, Layout, Link, Navbar } from 'nextra-theme-docs';
 
 import '@css/global.css';
-import { cn } from '@/lib/utils';
 
 const geistSans = Geist({
   subsets: ['latin'],
