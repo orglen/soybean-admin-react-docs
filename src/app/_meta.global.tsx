@@ -16,7 +16,13 @@ const THEME_ITEMS: MetaRecord = {
   config: '配置'
 };
 
+const REQUEST_ITEMS: MetaRecord = {
+  index: '概述',
+  usage: '使用'
+};
+
 export default {
+  // eslint-disable-next-line sort/object-properties
   guide: {
     items: {
       // eslint-disable-next-line sort/object-properties
@@ -32,6 +38,10 @@ export default {
       theme: {
         items: THEME_ITEMS,
         title: '主题'
+      },
+      request: {
+        items: REQUEST_ITEMS,
+        title: '请求'
       },
       icon: {
         items: ICON_ITEMS,
@@ -55,6 +65,10 @@ export default {
       }
     },
     title: '指引',
+    type: 'page'
+  },
+  faq: {
+    title: '常见问题',
     type: 'page'
   },
   index: {
