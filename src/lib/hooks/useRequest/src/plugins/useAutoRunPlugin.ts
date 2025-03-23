@@ -6,7 +6,7 @@ import type { Plugin } from '../types';
 const useAutoRunPlugin: Plugin<any, any[]> = (
   fetchInstance,
   { manual, params = {}, ready = true, refreshDepsAction }
-) => {
+): any => {
   useEffect(() => {
     if (!manual && ready) {
       if (refreshDepsAction) {

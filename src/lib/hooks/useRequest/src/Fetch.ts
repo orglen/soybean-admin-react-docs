@@ -5,7 +5,7 @@ import type { MutableRefObject } from 'react';
 import type { FetchState, Options, PluginReturn, Service, Subscribe } from './types';
 
 export default class Fetch<TData, TParams extends any[]> {
-  pluginImpls: PluginReturn<TData, TParams>[];
+  pluginImpls: PluginReturn<TData, TParams>[] = [];
 
   count: number = 0;
 
@@ -105,16 +105,15 @@ export default class Fetch<TData, TParams extends any[]> {
         // prevent run.then when request is canceled
         return new Promise(() => {});
       }
-
       this.setState({
-        error,
+        error: error as Error,
         loading: false
       });
 
-      this.options.onError?.(error, params);
+      this.options.onError?.(error as Error, params);
       this.runPluginHandler('onError', error, params);
 
-      this.options.onFinally?.(params, undefined, error);
+      this.options.onFinally?.(params, undefined, error as Error);
 
       if (currentCount === this.count) {
         this.runPluginHandler('onFinally', params, undefined, error);
