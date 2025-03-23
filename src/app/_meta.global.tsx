@@ -47,6 +47,7 @@ const ROUTE_ITEMS: MetaRecord = {
   create: '创建路由',
   cache: '路由缓存',
   guard: '路由守卫',
+  handle: '路由元信息',
   __: {
     title: 'hooks',
     type: 'separator'
