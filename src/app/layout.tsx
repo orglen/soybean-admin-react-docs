@@ -37,12 +37,10 @@ export const metadata: Metadata = {
 const navbar = (
   <Navbar
     chatIcon={<QQ className="w-[24px] h-[24px] " />}
-    chatLink="https://qm.qq.com/cgi-bin/qm/qr?k=lf7vqv-9JgJ_NDBAUk9EofQEfpqDw7so&jump_from=webapi&authKey=Ueo/dyEtrRm1vgkMI4yqiKjBRtKQuaEGNxMaXX56CoPQz2GRFP+qAADfKoe3ajJN"
+    chatLink="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=mSrGm_rLhAvbw2zADMMLOjy3YRz1IP2e&authKey=ejaXbXO2D20RVPtEQG%2BA9ZiK%2Fk6m7BBOvs6Vf298Ky%2F3Mc7KTEKvJwcv%2FOtERMEp&noverify=0&group_code=940903238"
     logo={<Logo className="w-[32px] h-[32px] text-[var(--soybean)]" />}
     projectLink="https://github.com/soybeanjs/soybean-admin-react"
-  >
-    <div className="flex items-center gap-2">1111</div>
-  </Navbar>
+  />
 );
 
 const banner = (
