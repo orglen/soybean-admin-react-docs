@@ -1,6 +1,7 @@
 {
   "name": "soybean-admin-react-docs",
   "version": "1.0.0",
+  "packageManager": "pnpm@10.4.1",
   "description": "Soybean-React-Docs",
   "author": "",
   "license": "ISC",
