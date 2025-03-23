@@ -35,7 +35,7 @@ function editUsername(username: string): Promise<void> {
 
 const Mutate = () => {
   // store last username
-  const lastRef = useRef<string>();
+  const lastRef = useRef<string>(null);
 
   const [state, setState] = useState('');
 
@@ -49,7 +49,9 @@ const Mutate = () => {
       toast.error(error.message, {
         position: 'top-center'
       });
-      mutate(lastRef.current);
+      if (lastRef.current) {
+        mutate(lastRef.current);
+      }
     },
     onSuccess: (_, params) => {
       setState('');
@@ -60,7 +62,7 @@ const Mutate = () => {
   });
 
   const onChange = () => {
-    lastRef.current = username;
+    lastRef.current = state;
     mutate(state);
     edit(state);
   };
