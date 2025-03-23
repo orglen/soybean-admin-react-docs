@@ -4,7 +4,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { Banner, Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { Footer, Layout, Link, Navbar } from 'nextra-theme-docs';
-
+import { Toaster } from 'sonner';
 import '@css/global.css';
 
 const geistSans = Geist({
@@ -94,6 +94,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         >
           {children}
         </Layout>
+
+        <Toaster />
       </body>
     </html>
   );
