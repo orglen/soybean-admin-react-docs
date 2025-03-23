@@ -7,10 +7,11 @@
   "keywords": [],
   "scripts": {
     "build": "next build --no-lint",
-    "cf-deploy": "npx @cloudflare/next-on-pages deploy",
-    "deploy": "pnpm run build && pnpm run cf-deploy",
+    "deploy": "pnpm run pages:build && wrangler pages deploy",
     "dev": "next dev",
     "lint": "next lint . --fix",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "preview": "pnpm run pages:build && wrangler pages dev",
     "start": "next start"
   },
   "dependencies": {

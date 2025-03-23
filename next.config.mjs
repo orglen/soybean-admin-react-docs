@@ -1,8 +1,14 @@
+import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
 import nextra from 'nextra';
 
 const withNextra = nextra({
   // ... Other Nextra config options
 });
+
+// eslint-disable-next-line n/prefer-global/process
+if (process.env.NODE_ENV === 'development') {
+  await setupDevPlatform();
+}
 
 // You can include other Next.js configuration options here, in addition to Nextra settings:
 export default withNextra({
@@ -24,7 +30,7 @@ export default withNextra({
     });
 
     config.cache = false; // 关闭缓存
-    
+
     return config;
   }
 });
