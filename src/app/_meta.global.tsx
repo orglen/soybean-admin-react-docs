@@ -79,6 +79,7 @@ export default {
         title: '系统图标'
       },
       error: '错误边界',
+      i18n: '国际化',
       cli: {
         items: CLI_ITEMS,
         title: '命令行'
