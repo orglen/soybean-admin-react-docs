@@ -22,6 +22,9 @@ export default withNextra({
       ],
       test: /\.svg$/
     });
+
+    config.cache = false; // 关闭缓存
+    
     return config;
   }
 });
