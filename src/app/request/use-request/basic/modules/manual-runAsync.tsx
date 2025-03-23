@@ -39,10 +39,12 @@ const ManualRunAsync = () => {
       toast.success(`The username was changed to "${state}" !`, {
         position: 'top-center'
       });
-    } catch (error) {
-      toast.error(error.message, {
-        position: 'top-center'
-      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message, {
+          position: 'top-center'
+        });
+      }
     }
   };
 
