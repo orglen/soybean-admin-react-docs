@@ -80,6 +80,7 @@ export default {
       },
       error: '错误边界',
       i18n: '国际化',
+      redux: 'Redux 与 Redux Toolkit',
       cli: {
         items: CLI_ITEMS,
         title: '命令行'
