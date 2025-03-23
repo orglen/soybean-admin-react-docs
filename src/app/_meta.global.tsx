@@ -56,6 +56,12 @@ const ROUTE_ITEMS: MetaRecord = {
   'use-route': 'useRoute'
 };
 
+const HOOKS_ITEMS: MetaRecord = {
+  // eslint-disable-next-line sort/object-properties
+  index: '概述',
+  'use-table': 'useTable'
+};
+
 export default {
   // eslint-disable-next-line sort/object-properties
   guide: {
@@ -109,6 +115,11 @@ export default {
   routes: {
     items: ROUTE_ITEMS,
     title: '路由',
+    type: 'page'
+  },
+  hooks: {
+    items: HOOKS_ITEMS,
+    title: 'hooks',
     type: 'page'
   },
   faq: {
