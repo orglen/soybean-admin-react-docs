@@ -590,7 +590,7 @@ export default function App() {
             <ScreenshotDisplay />
             <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-3/4 h-10 bg-blue-500/20 blur-3xl" />
 
-            <div className="absolute top-10 right-10 flex flex-col gap-2 z-10 hidden md:block">
+            <div className="absolute top-10 right-10 flex flex-col gap-2 z-10  md:block">
               <div className="bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/20 shadow-lg">
                 <Zap className="w-5 h-5 text-yellow-400" />
               </div>
@@ -602,7 +602,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="absolute top-1/2 left-8 transform -translate-y-1/2 flex flex-col gap-2 z-10 hidden md:block">
+            <div className="absolute top-1/2 left-8 transform -translate-y-1/2 flex flex-col gap-2 z-10  md:block">
               <div className="bg-white/10 backdrop-blur-md p-3 rounded-lg border border-white/20 shadow-lg">
                 <Globe className="w-5 h-5 text-blue-400" />
               </div>

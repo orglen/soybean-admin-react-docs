@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { Banner, Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
-import { Footer, Layout, Link, Navbar } from 'nextra-theme-docs';
+import { Layout, Link, Navbar } from 'nextra-theme-docs';
 import { Toaster } from 'sonner';
 
 import '@css/global.css';
@@ -47,24 +47,9 @@ const navbar = (
 
 const banner = (
   <Banner>
-    🎉 Nextra 4.0 is released. dimaMachina is looking{' '}
-    <Link href="https://github.com/dimaMachina">for a new job or consulting</Link>.
+    🎉 soybean-admin-react 2.0 is released. dimaMachina is looking
+    <Link href="https://github.com/soybeanjs/soybean-admin-react">for a new job or consulting</Link>.
   </Banner>
-);
-
-const footer = (
-  <Footer className="flex-col items-center md:items-start">
-    <a
-      className="x:focus-visible:nextra-focus flex items-center gap-1"
-      href="https://vercel.com?utm_source=nextra.site"
-      rel="noreferrer"
-      target="_blank"
-      title="vercel.com homepage"
-    >
-      Powered by
-    </a>
-    <p className="mt-6 text-xs">© {new Date().getFullYear()} The Nextra Project.</p>
-  </Footer>
 );
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
