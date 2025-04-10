@@ -5,7 +5,9 @@ import { Banner, Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
 import { Footer, Layout, Link, Navbar } from 'nextra-theme-docs';
 import { Toaster } from 'sonner';
+
 import '@css/global.css';
+import GlobalFooter from './globalFooter';
 
 const geistSans = Geist({
   subsets: ['latin'],
@@ -81,7 +83,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           banner={banner}
           docsRepositoryBase="https://github.com/soybeanjs/soybean-admin-react-docs"
           editLink="在github上编辑此页面"
-          footer={footer}
+          footer={<GlobalFooter />}
           navbar={navbar}
           pageMap={pageMap}
           sidebar={{ defaultMenuCollapseLevel: 1 }}
