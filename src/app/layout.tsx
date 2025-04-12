@@ -1,9 +1,9 @@
 import { Logo, QQ } from '@icons';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { Banner, Head } from 'nextra/components';
+import { Head } from 'nextra/components';
 import { getPageMap } from 'nextra/page-map';
-import { Layout, Link, Navbar } from 'nextra-theme-docs';
+import { Layout, Navbar } from 'nextra-theme-docs';
 import { Toaster } from 'sonner';
 
 import '@css/global.css';
@@ -45,13 +45,6 @@ const navbar = (
   />
 );
 
-const banner = (
-  <Banner>
-    🎉 soybean-admin-react 2.0 is released. dimaMachina is looking
-    <Link href="https://github.com/soybeanjs/soybean-admin-react">for a new job or consulting</Link>.
-  </Banner>
-);
-
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const pageMap = await getPageMap();
 
@@ -65,7 +58,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Layout
-          banner={banner}
           docsRepositoryBase="https://github.com/soybeanjs/soybean-admin-react-docs"
           editLink="在github上编辑此页面"
           footer={<GlobalFooter />}

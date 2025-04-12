@@ -1,266 +1,40 @@
 'use client';
 import { Button } from '@ui/button';
-import { motion, useAnimation, useScroll, useSpring, useTransform } from 'framer-motion';
-import {
-  ArrowDown,
-  ArrowRight,
-  Code,
-  Cpu,
-  GitBranch,
-  Globe,
-  Layers,
-  Lock,
-  Palette,
-  Smartphone,
-  Zap
-} from 'lucide-react';
-import React, { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowDown, ArrowRight, Code, Cpu, GitBranch, Globe, Layers, Lock, Palette, Zap } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 import { Parallax } from 'react-parallax';
 
 // 为CSS动画添加自定义类
-import './animations.css';
-
-// 自定义组件：滚动指示器
-const ScrollIndicator = () => {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    damping: 30,
-    restDelta: 0.001,
-    stiffness: 100
-  });
-
-  return (
-    <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 origin-left z-50"
-      style={{ scaleX }}
-    />
-  );
-};
-
-// 自定义组件：滚动到下一部分的按钮
-const ScrollToNext = ({ targetId }: { targetId: string }) => {
-  const scrollToSection = () => {
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <motion.div
-      animate={{ y: [0, 10, 0] }}
-      className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer"
-      transition={{ duration: 1.5, repeat: Infinity }}
-      onClick={scrollToSection}
-    >
-      <ArrowDown className="w-8 h-8 text-white" />
-    </motion.div>
-  );
-};
-
-// 自定义组件：特性卡片
-const FeatureCard = ({
-  delay,
-  description,
-  icon,
-  title
-}: {
-  delay: number;
-  description: string;
-  icon: React.ReactNode;
-  title: string;
-}) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    }
-  }, [controls, inView]);
-
-  return (
-    <motion.div
-      animate={controls}
-      className="bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20"
-      initial="hidden"
-      ref={ref}
-      transition={{ delay, duration: 0.5 }}
-      variants={{
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0 }
-      }}
-    >
-      <div className="text-blue-400 mb-3">{icon}</div>
-      <h3 className="text-lg font-bold mb-2 text-white">{title}</h3>
-      <p className="text-sm text-gray-300">{description}</p>
-    </motion.div>
-  );
-};
-
-// 自定义组件：技术栈标签
-const TechTag = ({ name }: { name: string }) => {
-  return (
-    <div className="bg-white/10 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-sm hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:shadow-md hover:shadow-blue-500/20 cursor-default group">
-      <span className="relative">
-        {name}
-        <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-gradient-to-r from-blue-400 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-      </span>
-    </div>
-  );
-};
-
-// 自定义组件：数字统计
-const StatCard = ({ delay, label, number }: { delay: number; label: string; number: string }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    }
-  }, [controls, inView]);
-
-  return (
-    <motion.div
-      animate={controls}
-      className="text-center bg-white/5 backdrop-blur-md p-5 rounded-xl border border-white/10 relative z-10 shadow-lg group"
-      initial="hidden"
-      ref={ref}
-      transition={{ delay, duration: 0.5 }}
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 }
-      }}
-    >
-      <h3 className="text-4xl md:text-5xl font-bold mb-2 text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-cyan-400 transition-all duration-300">
-        {number}
-      </h3>
-      <p className="text-gray-300 relative inline-block">
-        {label}
-        <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
-      </p>
-    </motion.div>
-  );
-};
-
-// 自定义组件：视差背景
-const ParallaxBackground = () => {
-  return (
-    <Parallax
-      bgImage="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80"
-      bgImageAlt="Background"
-      blur={0}
-      strength={200}
-    >
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 to-blue-900/90" />
-    </Parallax>
-  );
-};
-
-// 截图展示组件
-const ScreenshotDisplay = () => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    }
-  }, [controls, inView]);
-
-  return (
-    <motion.div
-      animate={controls}
-      className="relative mt-10 rounded-lg overflow-hidden border border-white/20 shadow-2xl shadow-blue-500/10"
-      initial="hidden"
-      ref={ref}
-      transition={{ duration: 0.8 }}
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
-      }}
-    >
-      <img
-        alt="Soybean Admin Dashboard"
-        className="w-full h-auto rounded-lg"
-        src="https://soybeanjs-1300612522.cos.ap-guangzhou.myqcloud.com/uPic/soybean-admin-v1-01.png"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
-    </motion.div>
-  );
-};
+import './page-modules/animations.css';
+import { FeatureCard, StatCard } from './page-modules/Card';
+import { ScrollIndicator, ScrollToNext } from './page-modules/ScrollComponents';
+import { ParallaxBackground, ScreenshotDisplay, TechTag } from './page-modules/otherComponents';
+import { features, techStack } from './page-modules/shared';
 
 const Page = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], [0, -300]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
-  // 技术栈
-  const techStack = [
-    'React 19',
-    'ReactRouter V7',
-    'Redux/toolkit',
-    'Ant Design',
-    'UnoCSS',
-    'Vite 6',
-    'TypeScript',
-    '响应式设计'
-  ];
+  const { push } = useRouter();
 
-  // 特性数据
-  const features = [
-    {
-      description: '基于 React19 + ReactRouter V7 + Redux/toolkit + Ant Design 构建，采用现代前端技术。',
-      icon: <Cpu className="w-8 h-8" />,
-      title: '最新技术栈'
-    },
-    {
-      description: '采用Vite构建，启动快速，HMR迅速响应，保证开发体验和应用性能。',
-      icon: <Zap className="w-8 h-8" />,
-      title: '高性能'
-    },
-    {
-      description: '自动化的文件路由系统，提供类似Next.js的约定式路由体验。',
-      icon: <GitBranch className="w-8 h-8" />,
-      title: '文件路由系统'
-    },
-    {
-      description: '内置基于角色的权限管理，轻松控制用户访问权限。',
-      icon: <Lock className="w-8 h-8" />,
-      title: '权限管理'
-    },
-    {
-      description: '完美适配移动端设备，提供流畅的跨设备用户体验。',
-      icon: <Smartphone className="w-8 h-8" />,
-      title: '移动端适配'
-    },
-    {
-      description: '内置多语言支持，轻松实现应用的国际化。',
-      icon: <Globe className="w-8 h-8" />,
-      title: '国际化支持'
-    },
-    {
-      description: '丰富的主题配置，支持暗黑模式和多种主题色彩。',
-      icon: <Palette className="w-8 h-8" />,
-      title: '主题配置'
-    },
-    {
-      description: '提供大量预设组件，满足各种后台管理系统的需求。',
-      icon: <Layers className="w-8 h-8" />,
-      title: '组件丰富'
-    }
-  ];
+  function goStart() {
+    push('/guide/quick-start');
+  }
+
+  function goDocs() {
+    push('/guide');
+  }
+
+  function goPreview() {
+    window.open('https://react.soybeanjs.cn/');
+  }
+
+  function goGitHub() {
+    window.open('https://github.com/soybeanjs/soybean-admin-react');
+  }
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-blue-950 to-black">
@@ -502,7 +276,10 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
-            <Button className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-6 py-2 rounded-full text-base font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25 group">
+            <Button
+              className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-6 py-2 rounded-full text-base font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25 group"
+              onClick={goStart}
+            >
               <span>开始使用</span>
               <motion.span
                 animate={{ x: [0, 4, 0] }}
@@ -512,9 +289,11 @@ export default function App() {
                 →
               </motion.span>
             </Button>
+
             <Button
               className="border-white/30  hover:bg-white/10 px-6 py-2 rounded-full text-base font-medium transition-all duration-300 backdrop-blur-sm shadow-lg group"
               variant="outline"
+              onClick={goDocs}
             >
               <span className="relative inline-block">
                 查看文档
@@ -998,12 +777,16 @@ function App() {
               </div>
 
               <div className="flex gap-3">
-                <Button className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-5 py-2 rounded-full flex items-center gap-2 shadow-lg">
+                <Button
+                  className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-5 py-2 rounded-full flex items-center gap-2 shadow-lg"
+                  onClick={goPreview}
+                >
                   立即体验
                 </Button>
                 <Button
                   className="border-white/30  hover:bg-white/10 px-5 py-2 rounded-full text-base transition-all duration-300 backdrop-blur-sm"
                   variant="outline"
+                  onClick={goGitHub}
                 >
                   了解更多
                 </Button>
@@ -1105,12 +888,16 @@ pnpm dev`}
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25">
+              <Button
+                className="bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-500/25"
+                onClick={goStart}
+              >
                 立即开始
               </Button>
               <Button
                 className="border-white/30  hover:bg-white/10 px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 backdrop-blur-sm"
                 variant="outline"
+                onClick={goDocs}
               >
                 查看文档
               </Button>
