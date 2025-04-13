@@ -62,6 +62,12 @@ const HOOKS_ITEMS: MetaRecord = {
   'use-table': 'useTable'
 };
 
+const PERSONAL_INSIGHTS_ITEMS: MetaRecord = {
+  index: '前言',
+  routes: '路由插件',
+  schema: 'schema的封装'
+};
+
 export default {
   // eslint-disable-next-line sort/object-properties
   guide: {
@@ -124,6 +130,11 @@ export default {
   },
   faq: {
     title: '常见问题',
+    type: 'page'
+  },
+  'personal-insights': {
+    items: PERSONAL_INSIGHTS_ITEMS,
+    title: '个人见解',
     type: 'page'
   },
   versions: {
