@@ -63,9 +63,11 @@ const HOOKS_ITEMS: MetaRecord = {
 };
 
 const PERSONAL_INSIGHTS_ITEMS: MetaRecord = {
+  // eslint-disable-next-line sort/object-properties
   index: '前言',
   routes: '路由插件',
-  schema: 'schema的封装'
+  schema: 'schema的封装',
+  emitter: '事件总线'
 };
 
 export default {
